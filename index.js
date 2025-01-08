@@ -38,7 +38,6 @@ async function run() {
 
     app.post("/authenticateUser", async (req, res) => {
       const user = req.body;
-      console.log(user);
       const query = { employeeId: user.employeeId, password: user.password };
       console.log(query);
       const result = await userCollection.findOne(query);
@@ -78,7 +77,6 @@ async function run() {
 
       try {
         const result = await accountingCollection.find(query).toArray();
-        console.log(result);
 
         const totalAmount = result.reduce(
           (acc, item) => acc + parseInt(item.amount),
